@@ -1,0 +1,107 @@
+@import 'tailwindcss';
+
+/* ─── Theme tokens (default = mint) ────────────────────────────────────── */
+@theme {
+  --color-bg: rgb(15 17 22 / 0.92);
+  --color-panel: rgb(20 23 30 / 0.96);
+  --color-card: rgb(26 30 38 / 1);
+  --color-row: rgb(33 38 48 / 0.85);
+  --color-row-hover: rgb(42 48 60 / 0.95);
+
+  --color-accent: #2bf2b6;
+  --color-accent-soft: rgb(43 242 182 / 0.12);
+  --color-accent-strong: #16e3a2;
+
+  --color-text: #e6f1ee;
+  --color-text-dim: #8a96a3;
+  --color-text-muted: #5b6573;
+
+  --color-border: rgb(255 255 255 / 0.05);
+  --color-border-strong: rgb(255 255 255 / 0.1);
+
+  --font-sans:
+    'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial,
+    sans-serif;
+}
+
+/* ─── Theme variants — only the accent triplet changes ───────────────── */
+[data-theme='blue'] {
+  --color-accent: #3b9eff;
+  --color-accent-soft: rgb(59 158 255 / 0.12);
+  --color-accent-strong: #2580f0;
+}
+
+[data-theme='purple'] {
+  --color-accent: #a855f7;
+  --color-accent-soft: rgb(168 85 247 / 0.12);
+  --color-accent-strong: #8b3ee0;
+}
+
+[data-theme='pink'] {
+  --color-accent: #ec4899;
+  --color-accent-soft: rgb(236 72 153 / 0.12);
+  --color-accent-strong: #d4307f;
+}
+
+[data-theme='orange'] {
+  --color-accent: #fb923c;
+  --color-accent-soft: rgb(251 146 60 / 0.12);
+  --color-accent-strong: #ea7a25;
+}
+
+/* ─── Base reset ───────────────────────────────────────────────────────── */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  background: transparent;
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  user-select: none;
+  overflow: hidden;
+}
+
+#app {
+  height: 100vh;
+  width: 100vw;
+}
+
+/* ─── Kill focus indicators (NUI = no keyboard a11y) ──────────────────── */
+*:focus,
+*:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ─── FiveM CEF only supports webkit scrollbar selectors ─────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-accent);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent-strong);
+}
+
+/* Dev background — replaced by transparent CEF in production */
+body.dev-bg {
+  background:
+    radial-gradient(at 30% 30%, #1a2330 0, transparent 60%),
+    radial-gradient(at 70% 80%, #0a1620 0, transparent 60%), #050a10;
+}
